@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Request Entry · Your Jaded Secrets</title>
+
+  <style>
+    :root{
+      --bg:#070707;
+      --panel:rgba(0,0,0,.62);
+      --ink:#e4dcc3;
+      --muted:#c8bb9a;
+      --gold:#b89c59;
+      --crimson:#a41212;
+      --line:#2a241a;
+      --radius:16px;
+      --max:980px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1100px 680px at 18% 0%, rgba(164,18,18,.20), transparent 58%),
+        radial-gradient(900px 600px at 82% 18%, rgba(184,156,89,.12), transparent 55%),
+        radial-gradient(700px 520px at 60% 80%, rgba(228,220,195,.05), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font-family:"Playfair Display", serif;
+      line-height:1.6;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:28px 18px 70px; }
+
+    header{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+      padding:10px 0 18px; border-bottom:1px solid var(--line);
+      flex-wrap:wrap;
+    }
+    .brand{ letter-spacing:.18em; font-weight:700; font-size:18px; text-transform:uppercase; }
+    .subbrand{
+      display:block; margin-top:6px; font-size:12px; letter-spacing:.12em;
+      color:var(--muted); text-transform:uppercase; opacity:.9;
+    }
+    nav{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; padding-top:2px;
+      font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+    }
+    nav a{ border-bottom:1px solid transparent; padding-bottom:2px; }
+    nav a:hover{ border-bottom-color:var(--gold); color:var(--ink); }
+
+    .hero{
+      margin-top:22px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.88)),
+        radial-gradient(900px 560px at 35% 25%, rgba(164,18,18,.28), transparent 60%),
+        #050505;
+    }
+    .hero-inner{ padding:22px; }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--gold);
+      border-radius:var(--radius);
+      padding:18px;
+      backdrop-filter: blur(6px);
+      max-width:860px;
+    }
+    .kicker{
+      font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
+      margin:0 0 10px;
+    }
+    h1{ margin:0 0 10px; font-size:38px; line-height:1.06; letter-spacing:.02em; }
+    .lead{ margin:0 0 14px; font-size:15px; color:var(--ink); opacity:.92; }
+
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:rgba(255,255,255,.02);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+    }
+    .panel h2{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .panel p{ margin:0 0 10px; color:var(--muted); font-size:14px; }
+
+    label{
+      display:block;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:14px 0 8px;
+    }
+    input, textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #3a2f1c;
+      background:rgba(0,0,0,.35);
+      color:var(--ink);
+      outline:none;
+      font-family:inherit;
+      font-size:14px;
+    }
+    textarea{ min-height:120px; resize:vertical; }
+    input::placeholder, textarea::placeholder{ color:#a99c83; }
+    input:focus, textarea:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(184,156,89,.10);
+    }
+
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    .btn{
+      appearance:none;
+      border:1px solid var(--gold);
+      background:transparent;
+      color:var(--ink);
+      padding:11px 16px;
+      border-radius:12px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      display:inline-block;
+    }
+    .btn:hover{ background:var(--gold); color:#0b0b0b; }
+    .btn.secondary{ border-color:#6a5a35; color:var(--muted); }
+    .btn.secondary:hover{ background:#19140d; color:var(--ink); }
+
+    .fine{ font-size:12px; color:#9b9078; letter-spacing:.06em; margin-top:10px; }
+    .rule{
+      border:1px solid rgba(184,156,89,.35);
+      border-radius:14px;
+      padding:12px 14px;
+      background:rgba(0,0,0,.35);
+      margin-top:12px;
+    }
+
+    footer{
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:#9b9078;
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="brand">Your Jaded Secrets</div>
+        <span class="subbrand">Request Entry · Private Wing</span>
+      </div>
+      <nav>
+        <a href="index.html">Return to YJS</a>
+        <a href="inner-chamber.html">Inner Chamber</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="https://cydniet.github.io/THE-MIDNIGHT-GARDEN-US/index.html" target="_blank" rel="noopener noreferrer">Midnight Garden</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="card">
+          <p class="kicker">New doors appear without announcement.</p>
+          <h1>Request entry.</h1>
+          <p class="lead">If you’re meant to enter, you’ll be answered. This is not customer service. It’s a selection.</p>
+          <div class="rule">
+            <div class="kicker" style="margin:0 0 6px;">The standard</div>
+            <div style="color:var(--ink); opacity:.92;">Say what you want. Say what you protect. Say what you build.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Your Signal</h2>
+          <p>Fill this out, then hit <strong>Send Request</strong>. It opens your email with everything preloaded.</p>
+
+          <form id="reqForm">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" autocomplete="name" />
+
+            <label for="found">How you found this</label>
+            <input id="found" type="text" placeholder="Link, invite, curiosity, fate, etc." />
+
+            <label for="why">Why you want entry</label>
+            <textarea id="why" placeholder="Be honest. Be precise."></textarea>
+
+            <label for="build">What you build (or protect)</label>
+            <textarea id="build" placeholder="Projects, goals, boundaries, standards."></textarea>
+
+            <label for="signal">Your signal (optional)</label>
+            <input id="signal" type="text" placeholder="IG / site / portfolio (optional)" />
+
+            <div class="cta-row">
+              <button class="btn" type="submit">Send Request</button>
+              <a class="btn secondary" href="inner-chamber.html">Back to Phrase Gate</a>
+            </div>
+
+            <p class="fine">Requests are reviewed. Silence is an answer.</p>
+          </form>
+        </div>
+
+        <footer>
+          © Your Jaded Secrets · Murphy Made
+          <div class="fine">Dangerous soft. Luxurious menace.</div>
+        </footer>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const form = document.getElementById('reqForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value || "";
+      const found = document.getElementById('found').value || "";
+      const why = document.getElementById('why').value || "";
+      const build = document.getElementById('build').value || "";
+      const signal = document.getElementById('signal').value || "";
+
+      const subject = encodeURIComponent("YJS Entry Request — Request Entry Page");
+      const body =
+        encodeURIComponent(
+          "Name: " + name + "\n" +
+          "How you found this: " + found + "\n\n" +
+          "Why I want entry:\n" + why + "\n\n" +
+          "What I build (or protect):\n" + build + "\n\n" +
+          "My signal (optional): " + signal + "\n"
+        );
+
+      window.location.href = "mailto:yourjadedsecrets@gmail.com?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>

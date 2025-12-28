@@ -1,18 +1,17 @@
-YJS Upgrade v29 — Phrase Request Inbox Fix (No Seek & Find Edition)
+YJS Upgrade v30 — Request Entry Page (No More Mailto Chaos)
 
-What this does:
-- inner-chamber.html: "REQUEST PHRASE" now emails yourjadedsecrets@gmail.com (NOT cydniet@gmail.com)
-- Adds a stronger intake email template (subject + body prompts)
-- Adds a micro-boundary line under the buttons
-- Keeps a simple device-local unlock (client-side) so the page still *feels* gated
-- Includes a rooms.html fallback in case you don’t have the map page yet
+What this adds:
+- request-entry.html: a sexy, on-brand request form that opens an email to yourjadedsecrets@gmail.com with everything prefilled.
+- inner-chamber.html: adds a "Request Entry (Form)" button alongside Request Phrase.
+- rooms.html: adds a Request Entry link.
 
-How to use:
-1) Unzip this
-2) Upload/replace these files in your GitHub repo root (YourJadedSecrets):
-   - inner-chamber.html
-   - rooms.html (ONLY if you don’t already have one)
+How to use (GitHub):
+1) Unzip
+2) Upload/replace in repo root:
+   - request-entry.html (NEW)
+   - inner-chamber.html (REPLACE)
+   - rooms.html (REPLACE or merge if you customized it)
 3) Commit changes
-4) Refresh the live site
+4) Refresh live site
 
-That’s it.
+That’s the upgrade.
