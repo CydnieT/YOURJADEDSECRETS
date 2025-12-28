@@ -113,7 +113,7 @@
       font-size:14px;
     }
     textarea{ min-height:120px; resize:vertical; }
-    input::placeholder, textarea::placeholder{ color:#a99c83; }
+    input::private draft, textarea::private draft{ color:#a99c83; }
     input:focus, textarea:focus{
       border-color:var(--gold);
       box-shadow:0 0 0 3px rgba(184,156,89,.10);
@@ -192,24 +192,25 @@
 
           <form id="reqForm">
             <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Your name" autocomplete="name" />
+            <input id="name" type="text" private draft="Your name" autocomplete="name" />
 
             <label for="found">How you found this</label>
-            <input id="found" type="text" placeholder="Link, invite, curiosity, fate, etc." />
+            <input id="found" type="text" private draft="Link, invite, curiosity, fate, etc." />
 
             <label for="why">Why you want entry</label>
-            <textarea id="why" placeholder="Be honest. Be precise."></textarea>
+            <textarea id="why" private draft="Be honest. Be precise."></textarea>
 
             <label for="build">What you build (or protect)</label>
-            <textarea id="build" placeholder="Projects, goals, boundaries, standards."></textarea>
+            <textarea id="build" private draft="Projects, goals, boundaries, standards."></textarea>
 
             <label for="signal">Your signal (optional)</label>
-            <input id="signal" type="text" placeholder="IG / site / portfolio (optional)" />
+            <input id="signal" type="text" private draft="IG / site / portfolio (optional)" />
 
             <div class="cta-row">
               <button class="btn" type="submit">Send Request</button>
               <a class="btn secondary" href="inner-chamber.html">Back to Phrase Gate</a>
             </div>
+<p class="fine" style="margin-top:10px;">Access is remembered per device/browser. New device = new door.</p>
 
             <p class="fine">Requests are reviewed. Silence is an answer.</p>
           </form>
@@ -247,28 +248,5 @@
       window.location.href = "mailto:yourjadedsecrets@gmail.com?subject=" + subject + "&body=" + body;
     });
   </script>
-
-  <div id="operatorDock" style="display:none; position:fixed; right:14px; bottom:14px; z-index:9998;">
-    <div style="border:1px solid rgba(184,156,89,.55); background:rgba(0,0,0,.66); border-radius:16px; padding:10px 10px; box-shadow:0 18px 60px rgba(0,0,0,.55); backdrop-filter: blur(6px);">
-      <div style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#c8bb9a; margin:0 0 8px;">Operator</div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <a href="observatory.html" style="border:1px solid #6a5a35; color:#c8bb9a; padding:8px 10px; border-radius:12px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-decoration:none;">Observatory</a>
-        <a href="gatekeeper.html" style="border:1px solid #6a5a35; color:#c8bb9a; padding:8px 10px; border-radius:12px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-decoration:none;">Gatekeeper</a>
-        <a href="ledger.html" style="border:1px solid #6a5a35; color:#c8bb9a; padding:8px 10px; border-radius:12px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-decoration:none;">Ledger</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    (function(){
-      try{
-        if(localStorage.getItem("yjsCoronated")){
-          const d = document.getElementById("operatorDock");
-          if(d) d.style.display = "block";
-        }
-      }catch(e){}
-    })();
-  </script>
-
 </body>
 </html>

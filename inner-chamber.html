@@ -117,7 +117,7 @@ If you already replaced inner-chamber.html in v29, replace it again with this on
       color:var(--ink);
       outline:none;
     }
-    input[type="text"]::placeholder{ color:#a99c83; }
+    input[type="text"]::private draft{ color:#a99c83; }
     input[type="text"]:focus{ border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,156,89,.10); }
 
     .cta-row{
@@ -208,7 +208,7 @@ If you already replaced inner-chamber.html in v29, replace it again with this on
             <p>If you were given the phrase, enter it. If you weren’t, request entry like an adult.</p>
 
             <div class="field">
-              <input id="phrase" type="text" placeholder="Enter phrase" autocomplete="off" />
+              <input id="phrase" type="text" private draft="Enter phrase" autocomplete="off" />
             </div>
 
             <div class="cta-row">
@@ -222,6 +222,7 @@ If you already replaced inner-chamber.html in v29, replace it again with this on
 
               <a class="btn secondary" href="request-entry.html">Request Entry (Form)</a>
             </div>
+<p class="fine" style="margin-top:10px;">Access is remembered per device/browser. New device = new door.</p>
 
             <p class="fine">Requests are reviewed. Silence is an answer. If you’re meant to enter, you’ll be answered.</p>
           </div>
@@ -255,8 +256,9 @@ If you already replaced inner-chamber.html in v29, replace it again with this on
     const toast = document.getElementById('toast');
 
     // Change this phrase any time. (Yes, it’s client-side. It’s a vibe gate, not Fort Knox.)
-    const CURRENT_PHRASE = (localStorage.getItem('yjsInnerPhrase') || 'VELVET FLAME').toUpperCase();
-function showToast(msg){
+    const CURRENT_PHRASE = "VELVET FLAME";
+
+    function showToast(msg){
       toast.textContent = msg;
       toast.classList.add('show');
       clearTimeout(window.__t);
@@ -275,28 +277,5 @@ function showToast(msg){
       }
     });
   </script>
-
-  <div id="operatorDock" style="display:none; position:fixed; right:14px; bottom:14px; z-index:9998;">
-    <div style="border:1px solid rgba(184,156,89,.55); background:rgba(0,0,0,.66); border-radius:16px; padding:10px 10px; box-shadow:0 18px 60px rgba(0,0,0,.55); backdrop-filter: blur(6px);">
-      <div style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#c8bb9a; margin:0 0 8px;">Operator</div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <a href="observatory.html" style="border:1px solid #6a5a35; color:#c8bb9a; padding:8px 10px; border-radius:12px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-decoration:none;">Observatory</a>
-        <a href="gatekeeper.html" style="border:1px solid #6a5a35; color:#c8bb9a; padding:8px 10px; border-radius:12px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-decoration:none;">Gatekeeper</a>
-        <a href="ledger.html" style="border:1px solid #6a5a35; color:#c8bb9a; padding:8px 10px; border-radius:12px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; text-decoration:none;">Ledger</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    (function(){
-      try{
-        if(localStorage.getItem("yjsCoronated")){
-          const d = document.getElementById("operatorDock");
-          if(d) d.style.display = "block";
-        }
-      }catch(e){}
-    })();
-  </script>
-
 </body>
 </html>

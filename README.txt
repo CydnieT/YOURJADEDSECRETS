@@ -1,20 +1,17 @@
-YJS Upgrade v31 — Gatekeeper controls Inner Chamber phrase + Operator Dock
+YJS Upgrade v30 — Request Entry Page (No More Mailto Chaos)
 
 What this adds:
-- gatekeeper.html (NEW/REPLACEMENT): lets you set the Inner Chamber phrase (device-local), plus optional Vault settings.
-- inner-chamber.html (PATCHED): phrase now reads from localStorage key yjsInnerPhrase (fallback: VELVET FLAME).
-- Operator Dock (PATCHED): on rooms.html, request-entry.html, inner-chamber.html it appears ONLY after Coronation (yjsCoronated=true).
+- request-entry.html: a sexy, on-brand request form that opens an email to yourjadedsecrets@gmail.com with everything prefilled.
+- inner-chamber.html: adds a "Request Entry (Form)" button alongside Request Phrase.
+- rooms.html: adds a Request Entry link.
 
-How to use:
+How to use (GitHub):
 1) Unzip
 2) Upload/replace in repo root:
-   - gatekeeper.html
-   - inner-chamber.html
-   - rooms.html (optional but recommended)
-   - request-entry.html (optional but recommended)
-3) Commit
-4) On your device, open gatekeeper.html and set your phrase.
+   - request-entry.html (NEW)
+   - inner-chamber.html (REPLACE)
+   - rooms.html (REPLACE or merge if you customized it)
+3) Commit changes
+4) Refresh live site
 
-Notes:
-- This is still static hosting. Settings are per-device.
-- If you want shared phrases across devices, we add a backend later.
+That’s the upgrade.

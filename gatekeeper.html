@@ -132,7 +132,7 @@
           <h2>Inner Chamber Phrase</h2>
           <p>Controls <code>inner-chamber.html</code>. Rotate it whenever.</p>
           <label for="innerPhrase">Current Phrase</label>
-          <input id="innerPhrase" type="text" placeholder="e.g., VELVET FLAME" />
+          <input id="innerPhrase" type="text" private draft="e.g., VELVET FLAME" />
           <div class="note">Stored as <code>yjsInnerPhrase</code>.</div>
         </div>
 
@@ -140,7 +140,7 @@
           <h2>Vault Phrases</h2>
           <p>Optional: store a phrase list used by Vault (if your Vault reads <code>yjsVaultSettings</code>).</p>
           <label for="vaultPhrases">Phrases (one per line)</label>
-          <textarea id="vaultPhrases" placeholder="PHRASE ONE&#10;PHRASE TWO&#10;PHRASE THREE"></textarea>
+          <textarea id="vaultPhrases" private draft="PHRASE ONE&#10;PHRASE TWO&#10;PHRASE THREE"></textarea>
           <div class="note">Stored inside <code>yjsVaultSettings.phrases</code>.</div>
         </div>
       </div>
@@ -152,11 +152,11 @@
           <div class="row">
             <div>
               <label for="openStart">Open Start</label>
-              <input id="openStart" type="text" placeholder="00:00" />
+              <input id="openStart" type="text" private draft="00:00" />
             </div>
             <div>
               <label for="openEnd">Open End</label>
-              <input id="openEnd" type="text" placeholder="03:33" />
+              <input id="openEnd" type="text" private draft="03:33" />
             </div>
           </div>
           <div class="note">Stored inside <code>yjsVaultSettings.window</code>.</div>
@@ -165,7 +165,7 @@
         <div>
           <h2>Closed Message</h2>
           <label for="closedMsg">Message</label>
-          <textarea id="closedMsg" placeholder="The Vault is closed. Return at midnight."></textarea>
+          <textarea id="closedMsg" private draft="The Vault is closed. Return at midnight."></textarea>
           <div class="note">Stored inside <code>yjsVaultSettings.closedMessage</code>.</div>
         </div>
       </div>

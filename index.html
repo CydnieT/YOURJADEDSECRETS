@@ -452,7 +452,7 @@
       font-family:inherit;
       font-size:14px;
     }
-    .input::placeholder{ color:#a79a82; }
+    .input::private draft{ color:#a79a82; }
 
     .gallery{
       margin-top:14px;
@@ -946,8 +946,8 @@
         <div class="sig-item">
           <h3>Leave a Mark</h3>
           <p>Optional: drop your handle so future drops can find you.</p>
-          <input class="input" type="text" placeholder="@yourhandle (optional, local only)" aria-label="Handle (optional)" />
-          <p class="fine">This field doesn’t submit anywhere yet. It’s a placeholder for when we wire it.</p>
+          <input class="input" type="text" private draft="@yourhandle (optional, local only)" aria-label="Handle (optional)" />
+          <p class="fine">This field doesn’t submit anywhere yet. It’s a private draft for when we wire it.</p>
         </div>
       </div>
     </section>
@@ -1103,6 +1103,8 @@
   }catch(e){}
 })();
 </script>
+
+  <a href="owner.html" aria-label="Owner" style="position:fixed; left:6px; bottom:6px; width:10px; height:10px; opacity:0.01; z-index:9997;">.</a>
 </body>
 
 </html>
