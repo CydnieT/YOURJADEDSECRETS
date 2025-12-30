@@ -1,282 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Jaded Secrets · Murphy Made</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Jaded Secrets · Murphy Made</title>
 
-<style>
-:root{
-  --bg:#070707;
-  --panel:rgba(0,0,0,.62);
-  --ink:#e4dcc3;
-  --muted:#c8bb9a;
-  --gold:#b89c59;
-  --line:#2a241a;
-  --radius:18px;
-  --max:1120px;
-  --shadow:0 18px 60px rgba(0,0,0,.55);
-  --ember:rgba(170,30,60,.22);
-  --crimson:rgba(168,24,58,.88);
-}
+  <style>
+    :root{
+      --bg:#070707;
+      --panel:rgba(0,0,0,.62);
+      --ink:#e4dcc3;
+      --muted:#c8bb9a;
+      --gold:#b89c59;
+      --line:#2a241a;
+      --radius:18px;
+      --max:1120px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --ember: rgba(170, 30, 60, .22);
+      --crimson: rgba(168,24,58,.88);
+    }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(184,156,89,.10), transparent 55%),
-    radial-gradient(900px 600px at 85% 10%, rgba(228,220,195,.07), transparent 55%),
-    radial-gradient(900px 700px at 40% 120%, var(--ember), transparent 55%),
-    var(--bg);
-  color:var(--ink);
-  font-family:"Playfair Display",serif;
-  line-height:1.6;
-  overflow-x:hidden;
-}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(184,156,89,.10), transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(228,220,195,.07), transparent 55%),
+        radial-gradient(900px 700px at 40% 120%, var(--ember), transparent 55%),
+        var(--bg);
+      color:var(--ink);
+      font-family:"Playfair Display", serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
 
-a{color:inherit;text-decoration:none}
+    a{ color:inherit; text-decoration:none; }
 
-.wrap{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:26px 18px 70px;
-}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:26px 18px 70px;
+    }
 
-header{
-  display:flex;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-  padding-bottom:14px;
-}
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0 18px;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(180deg, rgba(7,7,7,.92), rgba(7,7,7,.74));
+      backdrop-filter: blur(8px);
+    }
 
-.brand{
-  letter-spacing:.18em;
-  font-weight:700;
-  text-transform:uppercase;
-}
-.subbrand{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:6px;
-  display:block;
-}
+    .brand{
+      letter-spacing:.18em;
+      font-weight:700;
+      font-size:18px;
+      text-transform:uppercase;
+    }
+    .subbrand{
+      display:block;
+      margin-top:6px;
+      font-size:12px;
+      letter-spacing:.12em;
+      color:var(--muted);
+      text-transform:uppercase;
+      opacity:.9;
+    }
 
-nav{
-  display:flex;
-  gap:16px;
-  font-size:12px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
+    nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      padding-top:2px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      align-items:center;
+    }
+    nav a{
+      border-bottom:1px solid transparent;
+      padding-bottom:2px;
+    }
+    nav a:hover{ border-bottom-color:var(--gold); color:var(--ink); }
 
-.hero{
-  margin-top:20px;
-  min-height:620px;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.85)),
-    url("images/priestess-collage.png");
-  background-size:cover;
-  background-position:center;
-  position:relative;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
+    .pill{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .pill strong{ color:var(--ink); }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(700px 480px at 50% 70%, rgba(168,24,58,.18), transparent 65%);
-  animation:ember 3s ease-in-out infinite;
-}
+    .hero{
+      margin-top:18px;
+      min-height:640px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.85)),
+        url("images/priestess-collage.png");
+      background-size:cover;
+      background-position:center;
+    }
 
-@keyframes ember{
-  0%,100%{opacity:.85}
-  50%{opacity:1}
-}
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:
+        radial-gradient(700px 500px at 30% 30%, rgba(184,156,89,.20), transparent 64%),
+        radial-gradient(520px 380px at 78% 46%, rgba(168,24,58,.18), transparent 70%);
+      filter: blur(6px);
+      animation: drift 10s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(800px 520px at 50% 70%, rgba(168,24,58,.12), transparent 65%),
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.86));
+      animation: ember 3.1s ease-in-out infinite;
+      pointer-events:none;
+    }
 
-.hero-inner{
-  position:relative;
-  z-index:2;
-  height:100%;
-  display:flex;
-  align-items:flex-end;
-  padding:26px;
-}
+    @keyframes drift{
+      0%{ transform: translate3d(0,0,0) scale(1); opacity:.85; }
+      100%{ transform: translate3d(14px,-10px,0) scale(1.03); opacity:1; }
+    }
+    @keyframes ember{
+      0%,100%{ opacity:.92; }
+      50%{ opacity:1; }
+    }
 
-.hero-card{
-  background:var(--panel);
-  border:1px solid var(--gold);
-  border-radius:var(--radius);
-  padding:22px;
-  max-width:860px;
-}
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      height:100%;
+      display:flex;
+      align-items:flex-end;
+      padding:28px 22px 22px;
+    }
 
-.kicker{
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-size:12px;
-  color:var(--muted);
-}
+    .hero-card{
+      max-width:900px;
+      width:100%;
+      background:var(--panel);
+      border:1px solid rgba(184,156,89,.85);
+      border-radius:var(--radius);
+      padding:20px 18px 16px;
+      backdrop-filter: blur(6px);
+    }
 
-h1{
-  font-size:44px;
-  margin:10px 0;
-}
+    .kicker{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 10px;
+    }
 
-.lead{
-  font-size:15px;
-  color:var(--ink);
-  opacity:.92;
-}
+    h1{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.06;
+      letter-spacing:.02em;
+    }
 
-.cta-row{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
+    .lead{
+      margin:0 0 14px;
+      font-size:15px;
+      color:var(--ink);
+      opacity:.92;
+    }
 
-.btn{
-  border:1px solid var(--gold);
-  background:transparent;
-  color:var(--ink);
-  padding:12px 18px;
-  border-radius:14px;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  cursor:pointer;
-}
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
 
-.btn:hover{
-  background:var(--gold);
-  color:#0b0b0b;
-}
+    .btn{
+      appearance:none;
+      border:1px solid var(--gold);
+      background:transparent;
+      color:var(--ink);
+      padding:11px 16px;
+      border-radius:12px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      display:inline-block;
+    }
+    .btn:hover{
+      background:var(--gold);
+      color:#0b0b0b;
+    }
+    .btn.secondary{
+      border-color:#6a5a35;
+      color:var(--muted);
+    }
+    .btn.secondary:hover{
+      background:#19140d;
+      color:var(--ink);
+    }
+    .btn.danger{
+      border-color: rgba(168,24,58,.85);
+      color:#f1d7dd;
+    }
+    .btn.danger:hover{
+      background: rgba(168,24,58,.88);
+      border-color: rgba(168,24,58,.95);
+      color:#0b0b0b;
+    }
+    .btn.crimson{
+      border-color: rgba(168,24,58,.75);
+      box-shadow: 0 0 0 rgba(168,24,58,0);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    .btn.crimson:hover{
+      background: var(--crimson);
+      color:#0b0b0b;
+    }
+    @keyframes pulse{
+      0%,100%{ box-shadow: 0 0 0 rgba(168,24,58,0); }
+      50%{ box-shadow: 0 0 22px rgba(168,24,58,.22); }
+    }
 
-.btn.crimson{
-  border-color:var(--crimson);
-  animation:pulse 2.4s ease-in-out infinite;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns:1fr; }
+      h1{ font-size:40px; }
+      header{ position:static; backdrop-filter:none; }
+    }
 
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 0 rgba(168,24,58,0)}
-  50%{box-shadow:0 0 22px rgba(168,24,58,.28)}
-}
+    .panel{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:rgba(255,255,255,.02);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+    }
+    .panel h2{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .panel p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-/* VEIL TRANSITION */
-.veil{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0);
-  opacity:0;
-  pointer-events:none;
-  z-index:9999;
-  transition:opacity .55s ease, background .55s ease;
-}
+    .feature{
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background-size:cover;
+      background-position:center;
+      min-height:380px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.82)),
+        url("images/high-priestess.jpg");
+    }
+    .feature::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(620px 420px at 50% 45%, rgba(184,156,89,.18), transparent 66%);
+      animation: glow 2.7s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes glow{
+      0%,100%{ opacity:.72; }
+      50%{ opacity:1; }
+    }
+    .feature .label{
+      position:absolute;
+      bottom:12px; left:12px; right:12px;
+      z-index:1;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(184,156,89,.85);
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--ink);
+    }
 
-.veil.open{
-  opacity:1;
-  background:rgba(0,0,0,.55);
-}
+    .rooms{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 920px){ .rooms{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px){ .rooms{ grid-template-columns: 1fr; } }
 
-.veil::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  background:
-    radial-gradient(520px 320px at 50% 65%, rgba(184,156,89,.28), transparent 70%),
-    radial-gradient(700px 420px at 55% 60%, rgba(168,24,58,.22), transparent 75%);
-  filter:blur(14px);
-  opacity:0;
-  transform:scale(1.02);
-  transition:opacity .55s ease, transform .55s ease;
-}
+    .room{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#0f0f0f;
+      position:relative;
+      min-height:170px;
+      background-size:cover;
+      background-position:center;
+      cursor:pointer;
+      box-shadow: 0 14px 40px rgba(0,0,0,.45);
+      outline: none;
+    }
+    .room::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.64));
+      opacity:.90;
+      transition:opacity .2s ease;
+    }
+    .room:hover::after{ opacity:.76; }
 
-.veil.open::before{
-  opacity:1;
-  transform:scale(1.08);
-}
+    .room .meta{
+      position:absolute;
+      left:12px; right:12px; bottom:10px;
+      z-index:1;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-end;
+    }
+    .room .title{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--ink);
+      opacity:.98;
+    }
+    .badge{
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      border:1px solid rgba(184,156,89,.55);
+      padding:6px 8px;
+      border-radius:999px;
+      background:rgba(0,0,0,.35);
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .badge.red{
+      border-color: rgba(168,24,58,.65);
+      color:#f1d7dd;
+    }
 
-body.going-forward{
-  animation:forwardStep .65s ease forwards;
-}
+    footer{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:#9b9078;
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      text-align:center;
+    }
 
-@keyframes forwardStep{
-  0%{transform:none}
-  100%{transform:translateY(-6px) scale(1.015)}
-}
+    .fine{
+      font-size:12px;
+      color:#9b9078;
+      letter-spacing:.06em;
+      text-transform:none;
+      margin-top:8px;
+    }
 
-footer{
-  margin-top:26px;
-  border-top:1px solid var(--line);
-  padding-top:16px;
-  text-align:center;
-  font-size:12px;
-  color:#9b9078;
-  letter-spacing:.1em;
-}
-</style>
+    /* Age Gate Modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:rgba(0,0,0,.86);
+      z-index:9999;
+    }
+    .modal.open{ display:flex; }
+    .modal-card{
+      width:min(720px, 96vw);
+      border:1px solid rgba(184,156,89,.85);
+      border-radius:20px;
+      background:rgba(10,10,10,.92);
+      box-shadow: var(--shadow);
+      padding:18px 18px 16px;
+    }
+    .modal-card h3{
+      margin:0 0 8px;
+      font-size:18px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .modal-card p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .modal-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .modal-actions .btn{
+      flex: 1 1 190px;
+      text-align:center;
+    }
+    .mini-note{
+      margin-top:10px;
+      font-size:12px;
+      color:#9b9078;
+    }
+    .error-note{
+      margin-top:10px;
+      padding:10px 12px;
+      border:1px solid rgba(168,24,58,.45);
+      border-radius:14px;
+      background: rgba(168,24,58,.10);
+      color:#f1d7dd;
+      font-size:12px;
+      letter-spacing:.04em;
+      display:none;
+      white-space:pre-wrap;
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="brand">Your Jaded Secrets</div>
+        <span class="subbrand">Private wing · Murphy Made</span>
+      </div>
 
-<header>
-  <div>
-    <div class="brand">Your Jaded Secrets</div>
-    <span class="subbrand">Private wing · Murphy Made</span>
+      <nav aria-label="Primary">
+        <a href="#threshold">Threshold</a>
+        <a href="#rooms">Rooms</a>
+        <a href="https://cydniet.github.io/THE-MIDNIGHT-GARDEN-US/index.html" target="_blank" rel="noopener noreferrer">Midnight Garden</a>
+        <span class="pill" id="agePill" title="Your access level for age-gated doors.">Age: <strong>Not set</strong></span>
+      </nav>
+    </header>
+
+    <section class="hero" id="threshold" aria-label="Threshold">
+      <div class="hero-inner">
+        <div class="hero-card">
+          <p class="kicker">If you’re here, you were meant to be.</p>
+          <h1>You don’t need permission.</h1>
+          <p class="lead">
+            Dangerous soft. High Priestess energy. Luxurious menace.
+            Sexy, not scary. Powerful, not performative.
+          </p>
+
+          <div class="cta-row">
+            <button class="btn crimson" type="button" data-go="initiation.html">Initiation</button>
+            <button class="btn" type="button" data-go="inner-altar.html">Enter the Inner Altar</button>
+            <button class="btn secondary" type="button" data-go="inner-chamber.html">Enter the Inner Chamber</button>
+            <button class="btn secondary" type="button" data-go="atelier.html">The Atelier</button>
+            <button class="btn secondary" type="button" data-go="oracle-mirror.html">Oracle Mirror</button>
+            <button class="btn secondary" type="button" id="setAgeBtn">Set / Change Age</button>
+          </div>
+
+          <p class="fine">New doors appear without announcement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Manifesto + Feature">
+      <div class="panel">
+        <h2>Manifesto</h2>
+        <p><strong>I am the creator of my reality.</strong> I do not negotiate with limits.</p>
+        <p>I move with softness that doesn’t ask. I keep my luxury private until it’s irreversible.</p>
+        <p>This space holds drafts, drops, rituals, and future physical goods. The point is not to be liked. The point is to be inevitable.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="mailto:yourjadedsecrets@gmail.com?subject=YJS%20Entry%20Request&body=Name:%0AWhy%20I%20found%20this:%0AWhat%20I%20want%20to%20build:%0A" target="_blank" rel="noopener noreferrer">Request Entry</a>
+          <a class="btn secondary" href="https://cydniet.github.io/THE-MIDNIGHT-GARDEN-US/index.html" target="_blank" rel="noopener noreferrer">Back to Midnight Garden</a>
+        </div>
+
+        <p class="mini-note">Gate logic: 18+ to enter YJS. Some doors are 21+ for certain events/products.</p>
+      </div>
+
+      <div class="feature" aria-label="High Priestess">
+        <div class="label">High Priestess energy: soft power, sharp standard</div>
+      </div>
+    </section>
+
+    <section class="panel" id="rooms" style="margin-top:16px;" aria-label="Rooms">
+      <h2>Rooms</h2>
+      <p>Tap a door. If it’s age-gated, we check your level and either open it or block it.</p>
+
+      <div class="rooms">
+        <button class="room" type="button" data-go="initiation.html" style="background-image:url('images/priestess-collage.png');">
+          <div class="meta">
+            <div class="title">Initiation</div>
+            <div class="badge">18+</div>
+          </div>
+        </button>
+
+        <button class="room" type="button" data-go="inner-altar.html" style="background-image:url('images/inner_altar.png');">
+          <div class="meta">
+            <div class="title">Inner Altar</div>
+            <div class="badge">18+</div>
+          </div>
+        </button>
+
+        <button class="room" type="button" data-go="inner-chamber.html" style="background-image:url('images/priestess-collage.png');">
+          <div class="meta">
+            <div class="title">Inner Chamber</div>
+            <div class="badge">18+</div>
+          </div>
+        </button>
+
+        <button class="room" type="button" data-go="atelier.html" style="background-image:url('images/high-priestess.jpg');">
+          <div class="meta">
+            <div class="title">The Atelier</div>
+            <div class="badge">18+</div>
+          </div>
+        </button>
+
+        <button class="room" type="button" data-go="oracle-mirror.html" style="background-image:url('images/high-priestess.jpg');">
+          <div class="meta">
+            <div class="title">Oracle Mirror</div>
+            <div class="badge">18+</div>
+          </div>
+        </button>
+
+        <button class="room" type="button" data-go="gatekeeper.html" style="background-image:url('images/priestess-collage.png');">
+          <div class="meta">
+            <div class="title">Gatekeeper</div>
+            <div class="badge red">21+</div>
+          </div>
+        </button>
+
+        <button class="room" type="button" data-go="vault.html" style="background-image:url('images/high-priestess.jpg');">
+          <div class="meta">
+            <div class="title">The Vault</div>
+            <div class="badge red">21+</div>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      © Your Jaded Secrets · Murphy Made
+      <div class="fine">Quiet power. Loud results.</div>
+    </footer>
   </div>
-  <nav>
-    <a href="#threshold">Threshold</a>
-    <a href="#rooms">Rooms</a>
-    <a href="https://cydniet.github.io/THE-MIDNIGHT-GARDEN-US/index.html" target="_blank">Midnight Garden</a>
-  </nav>
-</header>
 
-<section class="hero" id="threshold">
-  <div class="hero-inner">
-    <div class="hero-card">
-      <p class="kicker">If you’re here, you were meant to be.</p>
-      <h1>You don’t need permission.</h1>
-      <p class="lead">
-        Dangerous soft. High Priestess energy. Luxurious menace.
-        This is where private power becomes inevitable.
+  <!-- Age Gate -->
+  <div class="modal" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="modal-card">
+      <h3 id="ageTitle">Age Gate</h3>
+      <p>
+        To enter YJS you must be <strong>18+</strong>.
+        Some doors (events/products) require <strong>21+</strong>.
       </p>
+      <p>Pick the option that applies. We store it on this device only (localStorage).</p>
 
-      <div class="cta-row">
-        <button class="btn crimson" id="initiationBtn">Initiation</button>
-        <button class="btn" onclick="location.href='inner-altar.html'">Enter the Inner Altar</button>
+      <div class="modal-actions">
+        <button class="btn" id="btn18" type="button">I’m 18+ (enter)</button>
+        <button class="btn danger" id="btn21" type="button">I’m 21+ (unlock 21+ doors)</button>
+        <button class="btn secondary" id="btnNo" type="button">I’m under 18 (leave)</button>
+      </div>
+
+      <div class="error-note" id="missingNote"></div>
+
+      <div class="mini-note">
+        Different device = different localStorage. If a door won’t open there, that device hasn’t been age-verified yet.
       </div>
     </div>
   </div>
-</section>
 
-<footer>
-  © Your Jaded Secrets · Murphy Made<br>
-  Quiet power. Loud results.
-</footer>
+  <script>
+    const AGE_KEY = "yjs_age_level";   // "18" or "21"
+    const PENDING_KEY = "yjs_pending_door";
 
-</div>
+    const gate = document.getElementById("ageGate");
+    const agePill = document.getElementById("agePill");
+    const setAgeBtn = document.getElementById("setAgeBtn");
+    const missingNote = document.getElementById("missingNote");
 
-<div class="veil" id="veil"></div>
+    function getAgeLevel(){
+      const v = localStorage.getItem(AGE_KEY);
+      return (v === "21" || v === "18") ? v : null;
+    }
+    function setAgeLevel(level){
+      localStorage.setItem(AGE_KEY, level);
+      updateAgePill();
+      closeGate();
+    }
+    function updateAgePill(){
+      const v = getAgeLevel();
+      agePill.innerHTML = v ? `Age: <strong>${v}+</strong>` : 'Age: <strong>Not set</strong>';
+    }
+    function openGate(msg){
+      if(msg){
+        missingNote.style.display = "block";
+        missingNote.textContent = msg;
+      }else{
+        missingNote.style.display = "none";
+        missingNote.textContent = "";
+      }
+      gate.classList.add("open");
+    }
+    function closeGate(){
+      gate.classList.remove("open");
+    }
 
-<script>
-const veil = document.getElementById("veil");
-const initiationBtn = document.getElementById("initiationBtn");
+    // Doors: adjust these anytime you want.
+    const DOORS_21 = new Set(["gatekeeper.html", "vault.html"]);
+    const DOORS_18 = new Set([
+      "initiation.html",
+      "inner-altar.html",
+      "inner-chamber.html",
+      "atelier.html",
+      "oracle-mirror.html"
+    ]);
 
-initiationBtn.addEventListener("click", () => {
-  document.body.classList.add("going-forward");
-  veil.classList.add("open");
-  setTimeout(() => {
-    window.location.href = "initiation.html";
-  }, 520);
-});
-</script>
+    function normalize(url){
+      return String(url || "").trim();
+    }
+    function is21Door(url){ return DOORS_21.has(normalize(url)); }
 
+    function canEnter(url){
+      const age = getAgeLevel();
+      if(!age) return false;
+      if(is21Door(url)) return age === "21";
+      return age === "18" || age === "21";
+    }
+
+    async function goTo(url){
+      // Quick check: if the file doesn't exist, tell you WHAT it's trying to open.
+      // Helps you catch "initiation.html" missing / renamed.
+      try{
+        const res = await fetch(url, { method: "GET", cache: "no-store" });
+        if(!res.ok){
+          openGate(
+            `That door exists in the design but the file is missing:\n\n${url}\n\nFix: make sure the HTML file exists in the repo root with that exact name (case matters).`
+          );
+          return;
+        }
+      }catch(e){
+        // If fetch fails, still attempt navigation.
+      }
+      window.location.href = url;
+    }
+
+    function attemptEnter(url){
+      url = normalize(url);
+      const age = getAgeLevel();
+
+      if(!age){
+        localStorage.setItem(PENDING_KEY, url);
+        openGate();
+        return;
+      }
+
+      if(!canEnter(url)){
+        localStorage.setItem(PENDING_KEY, url);
+        openGate("That door is 21+. Set your age to 21+ on this device to enter.");
+        return;
+      }
+
+      goTo(url);
+    }
+
+    document.querySelectorAll("[data-go]").forEach(el => {
+      el.addEventListener("click", () => attemptEnter(el.getAttribute("data-go")));
+    });
+
+    setAgeBtn?.addEventListener("click", () => openGate());
+
+    document.getElementById("btn18").addEventListener("click", () => {
+      setAgeLevel("18");
+      const pending = localStorage.getItem(PENDING_KEY);
+      if(pending && !is21Door(pending)){
+        localStorage.removeItem(PENDING_KEY);
+        goTo(pending);
+      }
+    });
+
+    document.getElementById("btn21").addEventListener("click", () => {
+      setAgeLevel("21");
+      const pending = localStorage.getItem(PENDING_KEY);
+      if(pending){
+        localStorage.removeItem(PENDING_KEY);
+        goTo(pending);
+      }
+    });
+
+    document.getElementById("btnNo").addEventListener("click", () => {
+      localStorage.removeItem(AGE_KEY);
+      localStorage.removeItem(PENDING_KEY);
+      window.location.href = "https://cydniet.github.io/THE-MIDNIGHT-GARDEN-US/index.html";
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeGate();
+    });
+
+    updateAgePill();
+
+    // Enforce 18+ entry to YJS
+    if(!getAgeLevel()) openGate();
+  </script>
 </body>
 </html>
