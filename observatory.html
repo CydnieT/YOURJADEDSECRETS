@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  
+  <meta name="yjs-min-age" content="18" />
+<meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Observatory · YJS</title>
-  <style>
+  
+  <link rel="stylesheet" href="assets/age-gate.css" />
+<style>
     :root{
       --bg:#050505;
       --panel:rgba(0,0,0,.66);
@@ -180,7 +184,9 @@
 <body>
   <div class="wrap">
     <header>
-      <div>
+      
+  <meta name="yjs-min-age" content="18" />
+<div>
         <div class="brand">Your Jaded Secrets</div>
         <span class="sub">Observatory · device-local signals</span>
       </div>
@@ -307,5 +313,7 @@
 
     render();
   </script>
+
+  <script src="assets/age-gate.js"></script>
 </body>
 </html>

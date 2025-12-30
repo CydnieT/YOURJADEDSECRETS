@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  
+  <meta name="yjs-min-age" content="18" />
+<meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oracle Mirror · Your Jaded Secrets</title>
-  <style>
+  
+  <link rel="stylesheet" href="assets/age-gate.css" />
+<style>
     :root{
       --bg:#050505;
       --panel:rgba(0,0,0,.66);
@@ -262,12 +266,14 @@
 <body>
   <div class="wrap">
     <header>
-      <div>
+      
+  <meta name="yjs-min-age" content="18" />
+<div>
         <div class="brand">Your Jaded Secrets</div>
         <span class="sub">Oracle Mirror · identity + decision</span>
       </div>
       <nav>
-        <a href="inner-altar.html">Altar</a>
+        <a href="inner-altar.html" data-min-age="21">Altar</a>
         <a href="vault.html">Vault</a>
         <a href="atelier.html">Atelier</a>
         <a href="index.html">Home</a>
@@ -563,5 +569,7 @@
     })();
   </script>
 
+
+  <script src="assets/age-gate.js"></script>
 </body>
 </html>
